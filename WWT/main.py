@@ -1,4 +1,5 @@
 import csv
+import os.path as op
 
 # TODO: Reset early weight coefficient when unloading
 
@@ -60,7 +61,8 @@ def extraCosts(currentPath, boxData):
 
 # Get box data
 boxData = []
-with open("/Users/noahc/Desktop/WWT/boxes.csv", "r") as csvFile:
+fpath = op.abspath(__file__)
+with open(f"{fpath[:-len(op.basename(op.abspath(__file__)))]}boxes.csv", "r") as csvFile:
     csvRaw = csv.reader(csvFile)
     for line in csvRaw:
         boxData.append(line)
